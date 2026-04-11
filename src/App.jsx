@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-/* ─── Inline style injector ─── */
 const GlobalStyles = () => (
   <style>{`
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
@@ -197,24 +196,23 @@ const GlobalStyles = () => (
   `}</style>
 );
 
-/* ─── LOADING SCREEN ─── */
+
 function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
-  const [phase, setPhase] = useState(0); // 0=building, 1=done, 2=exit
+  const [phase, setPhase] = useState(0);
   const [displayNum, setDisplayNum] = useState(0);
   const [glitchActive, setGlitchActive] = useState(false);
 
   useEffect(() => {
-    // Scroll to top immediately
+   
     window.scrollTo(0, 0);
 
-    // Occasional glitch
     const glitchInterval = setInterval(() => {
       setGlitchActive(true);
       setTimeout(() => setGlitchActive(false), 200);
     }, 1800);
 
-    // Progress ticker
+    
     const phases = [
       { target: 30, speed: 18 },
       { target: 65, speed: 28 },
@@ -254,7 +252,6 @@ function LoadingScreen({ onComplete }) {
   return (
     <div className={`loader-overlay${phase === 2 ? " exit" : ""}`}>
 
-      {/* Noise texture */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")",
@@ -262,7 +259,6 @@ function LoadingScreen({ onComplete }) {
         animation: "noiseFlicker 2s steps(2) infinite",
       }} />
 
-      {/* Scan line */}
       <div style={{
         position: "absolute", left: 0, right: 0, height: "1px",
         background: "linear-gradient(to right, transparent, rgba(245,197,24,.4), transparent)",
@@ -271,7 +267,7 @@ function LoadingScreen({ onComplete }) {
         zIndex: 2,
       }} />
 
-      {/* Expanding rings */}
+
       {[0,1,2].map(i => (
         <div key={i} style={{
           position: "absolute",
@@ -283,13 +279,12 @@ function LoadingScreen({ onComplete }) {
         }} />
       ))}
 
-      {/* Grid lines */}
+    
       <div className="grid-pattern" style={{ position: "absolute", inset: 0, opacity: 1, pointerEvents: "none" }} />
 
-      {/* Main content */}
       <div style={{ position: "relative", zIndex: 3, textAlign: "center", padding: "0 2rem", width: "100%", maxWidth: 560 }}>
 
-        {/* Logo with glow */}
+     
         <div style={{
           marginBottom: "clamp(1.5rem,4vw,2.5rem)",
           animation: "logoGlow 2.5s ease-in-out infinite",
@@ -298,7 +293,7 @@ function LoadingScreen({ onComplete }) {
           <LoaderLogo size={72} />
         </div>
 
-        {/* Brand name with glitch */}
+
         <div style={{
           animation: glitchActive ? "glitchH .2s steps(2) both" : "none",
           marginBottom: "clamp(.5rem,2vw,1rem)",
@@ -325,10 +320,10 @@ function LoadingScreen({ onComplete }) {
             textTransform: "uppercase",
             fontWeight: 700,
             marginBottom: "clamp(1.5rem,4vw,2.5rem)",
-          }}>DESIGN AGENCY</div>
+          }}>DESIGN</div>
         </div>
 
-        {/* Animated bar equalizer */}
+
         <div style={{
           display: "flex", gap: "clamp(3px,1vw,5px)", justifyContent: "center", alignItems: "flex-end",
           height: "clamp(32px,6vw,48px)",
@@ -350,7 +345,7 @@ function LoadingScreen({ onComplete }) {
           })}
         </div>
 
-        {/* Progress number */}
+    
         <div style={{
           display: "flex", alignItems: "baseline", justifyContent: "center", gap: 4,
           marginBottom: "clamp(.8rem,2vw,1.2rem)",
@@ -365,7 +360,7 @@ function LoadingScreen({ onComplete }) {
           <span className="font-display" style={{ fontSize: "clamp(1.5rem,5vw,2.2rem)", color: "rgba(245,197,24,.5)" }}>%</span>
         </div>
 
-        {/* Progress bar track */}
+
         <div style={{
           width: "100%", height: "2px",
           background: "rgba(245,197,24,.1)",
@@ -380,7 +375,7 @@ function LoadingScreen({ onComplete }) {
             transition: "width .08s linear",
             boxShadow: "0 0 12px rgba(245,197,24,.6)",
           }} />
-          {/* Shimmer on bar */}
+ 
           <div style={{
             position: "absolute", top: 0, left: 0, height: "100%", width: "40px",
             background: "linear-gradient(to right, transparent, rgba(255,255,255,.5), transparent)",
@@ -389,7 +384,7 @@ function LoadingScreen({ onComplete }) {
           }} />
         </div>
 
-        {/* Status text */}
+
         <div className="font-head" style={{
           fontSize: "clamp(.6rem,2vw,.72rem)",
           letterSpacing: ".28em",
@@ -405,7 +400,7 @@ function LoadingScreen({ onComplete }) {
             : "✦ Ready to Build"}
         </div>
 
-        {/* Three dots */}
+
         {phase === 0 && (
           <div style={{ display: "flex", justifyContent: "center", gap: 6, marginTop: "clamp(.8rem,2vw,1.2rem)" }}>
             {[0,1,2].map(i => (
@@ -418,22 +413,22 @@ function LoadingScreen({ onComplete }) {
         )}
       </div>
 
-      {/* Corner decorations */}
+  
       <div style={{ position: "absolute", top: 20, left: 20, width: 40, height: 40, borderTop: "1px solid rgba(245,197,24,.3)", borderLeft: "1px solid rgba(245,197,24,.3)" }} />
       <div style={{ position: "absolute", top: 20, right: 20, width: 40, height: 40, borderTop: "1px solid rgba(245,197,24,.3)", borderRight: "1px solid rgba(245,197,24,.3)" }} />
       <div style={{ position: "absolute", bottom: 20, left: 20, width: 40, height: 40, borderBottom: "1px solid rgba(245,197,24,.3)", borderLeft: "1px solid rgba(245,197,24,.3)" }} />
       <div style={{ position: "absolute", bottom: 20, right: 20, width: 40, height: 40, borderBottom: "1px solid rgba(245,197,24,.3)", borderRight: "1px solid rgba(245,197,24,.3)" }} />
 
-      {/* Version tag */}
+      
       <div className="font-head" style={{
         position: "absolute", bottom: "clamp(16px,3vw,28px)", right: "clamp(16px,3vw,28px)",
         fontSize: ".6rem", letterSpacing: ".2em", color: "#2a2a22",
-      }}>v2.0 © ACARVA</div>
+      }}>© ACARVA</div>
     </div>
   );
 }
 
-/* ─── Loader Logo ─── */
+
 const LoaderLogo = ({ size = 72 }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
     <polygon points="50,4 97,92 3,92" fill="white" />
@@ -443,7 +438,6 @@ const LoaderLogo = ({ size = 72 }) => (
   </svg>
 );
 
-/* ─── Intersection Observer hook ─── */
 function useInView(threshold = 0.12) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -456,7 +450,6 @@ function useInView(threshold = 0.12) {
   return [ref, inView];
 }
 
-/* ─── Animated section wrapper ─── */
 function Reveal({ children, delay = 0, anim = "fadeUp", className = "" }) {
   const [ref, inView] = useInView();
   return (
@@ -479,7 +472,6 @@ function Reveal({ children, delay = 0, anim = "fadeUp", className = "" }) {
   );
 }
 
-/* ─── Animated number counter ─── */
 function Counter({ target, suffix = "", duration = 2000 }) {
   const [count, setCount] = useState(0);
   const [ref, inView] = useInView(0.3);
@@ -499,7 +491,7 @@ function Counter({ target, suffix = "", duration = 2000 }) {
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
-/* ─── Logo SVG ─── */
+
 const Logo = ({ size = 42 }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
     <polygon points="50,4 97,92 3,92" fill="white" />
@@ -509,7 +501,7 @@ const Logo = ({ size = 42 }) => (
   </svg>
 );
 
-/* ─── Section label ─── */
+
 const SectionLabel = ({ children }) => (
   <div className="flex items-center gap-3 mb-4" style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
     <div className="h-px w-8 line-grow" style={{ background: "#F5C518", height: 1, width: 32 }} />
@@ -519,7 +511,7 @@ const SectionLabel = ({ children }) => (
   </div>
 );
 
-/* ─── DATA ─── */
+
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Work",     href: "#work"     },
@@ -555,7 +547,7 @@ const WORK = [
 ];
 
 const TESTIMONIALS = [
-  { name: "Priya Mehta",  role: "CEO, Vertice",          quote: "Acarva didn't just build our brand — they built our future. Revenue tripled within 18 months of launch. Genuinely the best investment we've ever made.", avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=120&q=80" },
+  { name: "Priya Mehta",  role: "CEO, Vertice",          quote: "Acarva didn't just build our brand — they built our future. Revenue tripled within 18 months of launch. Genuinely the best investment we've ever made.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" },
   { name: "James Okafor", role: "Founder, Apex Fitness", quote: "The most strategic and creative team I've ever hired. They understood our vision immediately and delivered beyond every expectation. Results speak for themselves.", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&q=80" },
   { name: "Sofia Larsen", role: "CMO, LuxeNoir",         quote: "Flawless execution, stunning design, and a team that genuinely obsesses over your success. Acarva elevated our brand from local boutique to global icon.", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&q=80" },
   { name: "Marcus Webb",  role: "MD, Harlow Capital",    quote: "Our $40M raise wouldn't have happened without the credibility Acarva's branding gave us. Investors commented on our brand before anything else.", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=80" },
@@ -601,9 +593,7 @@ const CLIENTS = [
   "LuxeNoir","Vertice","Apex","Harlow Capital","Orion","Terroir","NordPath","Lumis Co",
 ];
 
-/* ═══════════════════════════════════════
-   MAIN COMPONENT
-═══════════════════════════════════════ */
+
 export default function AcarvaLanding() {
   const [loading, setLoading]           = useState(true);
   const [scrollY, setScrollY]           = useState(0);
@@ -612,7 +602,7 @@ export default function AcarvaLanding() {
   const [mousePos, setMousePos]         = useState({ x: 0.5, y: 0.4 });
   const [activeService, setActiveService] = useState(null);
 
-  // Scroll to top on mount/refresh
+ 
   useEffect(() => {
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
@@ -658,7 +648,7 @@ export default function AcarvaLanding() {
     <div className="font-body" style={{ background: "#060606", color: "#ede8de", overflowX: "hidden" }}>
       <GlobalStyles />
 
-      {/* ══════ NAVBAR ══════ */}
+      
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 999,
         padding: "0 clamp(1rem,4vw,3rem)",
@@ -707,7 +697,7 @@ export default function AcarvaLanding() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      
       <div className={`mobile-only mobile-menu ${menuOpen ? "open" : "closed"}`}
         style={{ position: "fixed", top: 68, left: 0, right: 0, zIndex: 998, background: "rgba(6,6,6,.98)", borderBottom: "1px solid rgba(245,197,24,.15)", padding: menuOpen ? "1.2rem 1.4rem 1.6rem" : "0 1.4rem" }}>
         {NAV_LINKS.map((l, i) => (
@@ -743,7 +733,6 @@ export default function AcarvaLanding() {
         <div className="spin2" style={{ position: "absolute", top: "14%", right: "8%", width: "min(240px,26vw)", height: "min(240px,26vw)", border: "1px solid rgba(245,197,24,.06)", borderRadius: "50%" }} />
         <div className="spin1" style={{ position: "absolute", bottom: "6%", left: "2%", width: "min(260px,28vw)", height: "min(260px,28vw)", border: "1px solid rgba(245,197,24,.07)", borderRadius: "50%" }} />
 
-        {/* Floating hero image — desktop only */}
         <div className="hide-mobile" style={{
           position: "absolute", right: "clamp(2rem,6vw,8rem)", top: "50%",
           transform: "translateY(-50%)",
@@ -766,13 +755,13 @@ export default function AcarvaLanding() {
           </div>
         </div>
 
-        {/* Hero text */}
+
         <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 clamp(1.2rem,5vw,4rem)", position: "relative", zIndex: 2, width: "100%" }}>
           <div style={{ animation: "fadeUp .7s ease .15s both" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 10, border: "1px solid rgba(245,197,24,.25)", padding: "7px 16px", marginBottom: "1.6rem" }}>
               <span className="pulse-gold" style={{ width: 7, height: 7, background: "#F5C518", borderRadius: "50%", display: "inline-block", flexShrink: 0 }} />
               <span className="font-head" style={{ fontSize: "clamp(.62rem,.9vw,.72rem)", letterSpacing: ".28em", color: "#9a9a88", textTransform: "uppercase" }}>
-                Marketing & Business Building Agency
+                Marketing & Business Building 
               </span>
             </div>
           </div>
@@ -804,7 +793,7 @@ export default function AcarvaLanding() {
             </button>
           </div>
 
-          {/* Stats row */}
+      
           <div className="hero-stats" style={{ display: "flex", flexWrap: "wrap", gap: "clamp(1.2rem,4vw,3rem)", marginTop: "clamp(2rem,4vw,3.5rem)", animation: "fadeUp .8s ease 1.05s both" }}>
             {STATS.map(s => (
               <div key={s.label} style={{ minWidth: 0 }}>
@@ -819,14 +808,14 @@ export default function AcarvaLanding() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
+  
         <div className="scroll-indicator hide-mobile" style={{ position: "absolute", bottom: 36, left: "50%", display: "flex", flexDirection: "column", alignItems: "center", gap: 6, transform: "translateX(-50%)" }}>
           <div className="font-head" style={{ fontSize: ".6rem", letterSpacing: ".3em", color: "#3a3a33", textTransform: "uppercase" }}>Scroll</div>
           <div style={{ width: 1, height: 44, background: "linear-gradient(to bottom, #F5C518, transparent)" }} />
         </div>
       </section>
 
-      {/* ══════ MARQUEE ══════ */}
+
       <div className="marquee-mt" style={{ background: "rgba(245,197,24,.04)", borderTop: "1px solid rgba(245,197,24,.12)", borderBottom: "1px solid rgba(245,197,24,.12)", padding: "14px 0", overflow: "hidden", marginTop: "clamp(2rem,4vw,4rem)" }}>
         <div className="marquee-track">
           {CLIENTS.map((c, i) => (
@@ -838,7 +827,6 @@ export default function AcarvaLanding() {
         </div>
       </div>
 
-      {/* ══════ SERVICES ══════ */}
       <section id="services" className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <Reveal>
@@ -885,7 +873,7 @@ export default function AcarvaLanding() {
         </div>
       </section>
 
-      {/* ══════ ABOUT ══════ */}
+
       <section id="about" className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)", background: "#0a0a0a", borderTop: "1px solid rgba(245,197,24,.08)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%,460px),1fr))", gap: "clamp(2.5rem,5vw,5rem)", alignItems: "center" }}>
           <Reveal anim="fadeLeft">
@@ -931,7 +919,7 @@ export default function AcarvaLanding() {
         </div>
       </section>
 
-      {/* ══════ WORK ══════ */}
+
       <section id="work" className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <Reveal>
@@ -974,7 +962,6 @@ export default function AcarvaLanding() {
         </div>
       </section>
 
-      {/* ══════ PROCESS ══════ */}
       <section className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)", background: "#080808", borderTop: "1px solid rgba(245,197,24,.08)", borderBottom: "1px solid rgba(245,197,24,.08)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <Reveal>
@@ -1006,7 +993,6 @@ export default function AcarvaLanding() {
         </div>
       </section>
 
-      {/* ══════ TEAM ══════ */}
       <section id="team" className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <Reveal>
@@ -1037,7 +1023,6 @@ export default function AcarvaLanding() {
         </div>
       </section>
 
-      {/* ══════ TESTIMONIALS ══════ */}
       <section className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)", background: "#070707", borderTop: "1px solid rgba(245,197,24,.08)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <Reveal>
@@ -1094,7 +1079,6 @@ export default function AcarvaLanding() {
         </div>
       </section>
 
-      {/* ══════ PRICING ══════ */}
       <section id="pricing" className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <Reveal>
@@ -1158,7 +1142,6 @@ export default function AcarvaLanding() {
         </div>
       </section>
 
-      {/* ══════ CTA BANNER ══════ */}
       <section className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)", background: "#060606", position: "relative", overflow: "hidden", borderTop: "1px solid rgba(245,197,24,.08)" }}>
         <div className="grid-pattern" style={{ position: "absolute", inset: 0 }} />
         <div className="spin1" style={{ position: "absolute", top: "-10%", right: "-5%", width: "min(500px,50vw)", height: "min(500px,50vw)", border: "1px solid rgba(245,197,24,.07)", borderRadius: "50%" }} />
@@ -1211,7 +1194,6 @@ export default function AcarvaLanding() {
         </div>
       </section>
 
-      {/* ══════ FOOTER ══════ */}
       <section id="contact" className="section-pad" style={{ padding: "clamp(3.5rem,7vw,5.5rem) clamp(1.2rem,5vw,4rem)", background: "#080808", borderTop: "1px solid rgba(245,197,24,.08)" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,220px),1fr))", gap: "2.5rem" }}>
@@ -1249,7 +1231,6 @@ export default function AcarvaLanding() {
               </div>
             </div>
 
-            {/* Nav cols */}
             {[
               { head: "Services",  items: SERVICES.map(s => s.title) },
               { head: "Company",   items: ["About Us","Our Work","Blog","Careers","Press"] },
@@ -1271,7 +1252,6 @@ export default function AcarvaLanding() {
             ))}
           </div>
 
-          {/* Bottom bar */}
           <div className="footer-bottom" style={{ borderTop: "1px solid rgba(245,197,24,.08)", marginTop: "2.5rem", paddingTop: "1.6rem", display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: ".8rem", alignItems: "center" }}>
             <span className="font-body" style={{ fontSize: ".75rem", color: "#3a3a33", fontWeight: 300 }}>
               © {new Date().getFullYear()} Acarva Design. All rights reserved.
@@ -1293,7 +1273,6 @@ export default function AcarvaLanding() {
   );
 }
 
-/* ─── Skill bar ─── */
 function SkillBar({ skill, pct, delay = 0 }) {
   const [ref, inView] = useInView(0.3);
   return (

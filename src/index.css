@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* Custom Fonts */
+
   --font-display: "Bebas Neue", sans-serif;
   --font-head: "Syne", sans-serif;
   --font-body: "DM Sans", sans-serif;
 
-  /* Custom Animations */
+  
   --animate-marquee: marquee 22s linear infinite;
   --animate-spin1: spin 25s linear infinite;
   --animate-spin2: spin 15s linear infinite reverse;
@@ -14,7 +14,7 @@
   --animate-pulse2: pulse2 2.4s ease-in-out infinite;
   --animate-bar-drop: barDrop 1.4s ease both;
 
-  /* Keyframes */
+
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
