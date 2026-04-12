@@ -76,31 +76,6 @@ A cinematic intro sequence plays on every page load before revealing the site.
 
 ---
 
-## Getting Started
-
-```bash
-git clone https://github.com/your-username/acarva-landing.git
-cd acarva-landing
-npm install
-npm run dev
-```
-
-Import and render the component:
-
-```jsx
-import AcarvaLanding from './AcarvaLanding';
-
-export default function App() {
-  return <AcarvaLanding />;
-}
-```
-
-The component is fully self-contained — it injects its own styles, loads Google Fonts, and manages all state internally.
-
-## Customization
-
-All content lives in the data constants near the top of `AcarvaLanding.jsx`:
-
 ```
 SERVICES · STATS · WORK · TESTIMONIALS · TEAM · PROCESS · PRICING · CLIENTS
 ```
