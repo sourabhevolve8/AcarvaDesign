@@ -18,8 +18,8 @@ export default function LoadingScreen({ onComplete }) {
     const phases = [
       { target: 30, speed: 18 },
       { target: 65, speed: 28 },
-      { target: 88, speed: 40 },
-      { target: 100, speed: 22 },
+      { target: 88, speed: 35 },
+      { target: 100, speed: 18 },
     ];
     let current = 0;
     let phaseIdx = 0;
@@ -185,7 +185,7 @@ export default function LoadingScreen({ onComplete }) {
           {phase === 0
             ? progress < 30 ? "Initializing brand systems..."
             : progress < 65 ? "Loading creative assets..."
-            : progress < 88 ? "Calibrating design engine..."
+            : progress < 88 ? "Calibrating growth engine..."
             : "Finalizing experience..."
             : "✦ Ready to Build"}
         </div>

@@ -14,9 +14,6 @@ export default function Services() {
             <h2 className="font-display section-h2" style={{ fontSize: "clamp(2.6rem,6vw,5rem)", lineHeight: .95, letterSpacing: ".02em" }}>
               OUR <span style={{ color: "#F5C518" }}>SERVICES</span>
             </h2>
-            <p className="font-body" style={{ fontSize: ".92rem", color: "#6b6b60", maxWidth: 340, fontWeight: 300, lineHeight: 1.7 }}>
-              Six disciplines, one mission: building systems that grow your business and make your brand impossible to ignore.
-            </p>
           </div>
         </Reveal>
 

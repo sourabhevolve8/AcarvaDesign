@@ -1,23 +1,18 @@
 import { Reveal, SectionLabel } from "./UI";
 import { WORK } from "../data/Constants";
 
-export default function Work({ scrollTo }) {
+export default function Work() {
   return (
     <section id="work" className="section-pad" style={{ padding: "clamp(4rem,8vw,7rem) clamp(1.2rem,5vw,4rem)" }}>
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <Reveal>
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: "1.2rem", marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
             <div>
-              <SectionLabel>Portfolio</SectionLabel>
+              <SectionLabel> Everything we design is built to support your startup’s growth.</SectionLabel>
               <h2 className="font-display section-h2" style={{ fontSize: "clamp(2.6rem,6vw,5rem)", lineHeight: .95, letterSpacing: ".02em" }}>
                 FEATURED <span style={{ color: "#F5C518" }}>WORK</span>
               </h2>
             </div>
-            <button onClick={() => scrollTo("#contact")}
-              className="btn-outline font-head"
-              style={{ padding: "10px 22px", fontSize: ".78rem", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 700, border: "1.5px solid rgba(245,197,24,.35)", color: "#F5C518", background: "transparent", borderRadius: 2, cursor: "pointer" }}>
-              View All Projects
-            </button>
           </div>
         </Reveal>
 

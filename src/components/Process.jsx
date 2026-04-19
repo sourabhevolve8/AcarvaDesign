@@ -7,7 +7,7 @@ export default function Process() {
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
-            <SectionLabel>How It Works</SectionLabel>
+            <SectionLabel>From idea to launch — simplified</SectionLabel>
             <h2 className="font-display section-h2" style={{ fontSize: "clamp(2.6rem,6vw,5rem)", letterSpacing: ".02em", lineHeight: .95 }}>
               OUR <span style={{ color: "#F5C518" }}>PROCESS</span>
             </h2>

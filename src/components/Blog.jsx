@@ -99,35 +99,6 @@ export default function Blog({ scrollTo }) {
             </Reveal>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <Reveal delay={0.3}>
-          <div style={{
-            marginTop: "clamp(2.5rem,4vw,3.5rem)",
-            padding: "clamp(1.5rem,3vw,2.2rem) clamp(1.5rem,4vw,3rem)",
-            border: "1px solid rgba(245,197,24,.12)",
-            background: "rgba(245,197,24,.02)",
-            display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.2rem",
-          }}>
-            <div>
-              <div className="font-head" style={{ fontSize: "1.05rem", fontWeight: 700, marginBottom: ".3rem" }}>
-                Want expert insights in your inbox?
-              </div>
-              <p className="font-body" style={{ fontSize: ".85rem", color: "#6b6b60", fontWeight: 300 }}>
-                Subscribe to the newsletter — strategy, branding, and growth delivered weekly.
-              </p>
-            </div>
-            <button
-              onClick={() => {
-                const el = document.getElementById("newsletter");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="btn-primary font-head gold-bg"
-              style={{ padding: "12px 28px", fontSize: ".8rem", letterSpacing: ".14em", textTransform: "uppercase", fontWeight: 700, color: "#000", border: "none", borderRadius: 2, cursor: "pointer", whiteSpace: "nowrap" }}>
-              Subscribe Free →
-            </button>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
