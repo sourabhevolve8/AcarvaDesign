@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Reveal, SectionLabel } from "./UI";
 import { SERVICES } from "../data/Constants";
 
-// scrollTo prop is required — it must be passed from the parent (App)
-// so that "Let's Talk" / "Schedule a Call" buttons work from any view.
+const url = import.meta.env.VITE_FORMSUBMIT_URL;
+
 export default function CTASection({ scrollTo }) {
   const [status, setStatus] = useState("IDLE");
 
@@ -14,7 +14,7 @@ export default function CTASection({ scrollTo }) {
     const formData = new FormData(e.target);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/sourabh.evolve@gmail.com", {
+      const response = await fetch(url, {
         method: "POST",
         headers: { Accept: "application/json" },
         body: formData,
